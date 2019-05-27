@@ -1,6 +1,7 @@
 FROM kalilinux/kali-linux-docker
 
 # docker build -t mykali20190526 --no-cache --build-arg HTTP_PROXY=http://127.0.0.1:3128 .
+# docker build -t mykali20190526 --no-cache .
 
 # https://github.com/dbeaver/dbeaver
 # https://github.com/jindrapetrik/jpexs-decompiler
@@ -13,7 +14,7 @@ COPY oracle /usr/lib/
 COPY bashrc /root/.bashrc
  
 RUN apt -y update --fix-missing && apt -y upgrade --fix-missing && apt-get -yy dist-upgrade && apt autoremove -yy \
-    && apt -y install kali-linux  chkrootkit rkhunter clamav clamav-daemon lynis --fix-missing \
+    && apt -y install kali-linux  chkrootkit rkhunter clamav clamtk clamav-daemon lynis --fix-missing \
     && apt -y  install xvfb --fix-missing  \
     && apt -y  install net-tools --fix-missing  \
     && apt -y  install masscan --fix-missing  \

@@ -67,3 +67,21 @@ docker build -t mykali20190526 --no-cache .
 ### jpexs-decompiler
 - ffdec
 
+### lynis
+```
+lynis --check-all -Q
+```
+
+### clamav,clamav-daemon
+```
+freshclam
+clamscan -r --bell -i ~/
+clamscan -r --remove /
+
+```
+
+### chkrootkit,rkhunter
+```
+rkhunter -c
+chkrootkit|grep not
+```
