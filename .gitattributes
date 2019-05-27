@@ -1,0 +1,2 @@
+*.jar* filter=lfs diff=lfs merge=lfs -text
+oracle_client_12_2_exp_imp/lib/libociei.so filter=lfs diff=lfs merge=lfs -text
