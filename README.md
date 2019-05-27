@@ -30,14 +30,6 @@ git commit -m "fix" .
 git pull --allow-unrelated-histories origin master
 
 
-
-<!-- git filter-branch --tree-filter 'rm sqldeveloper/sqldeveloper/extensions/oracle.datamodeler.jar' HEAD
-git filter-branch --tree-filter 'rm sqldeveloper/ords/ords.war' HEAD
-git filter-branch --tree-filter 'rm oracle/18.3/client64/lib/libclntsh.so.18.1' HEAD
-git filter-branch --tree-filter 'rm oracle/18.3/client64/lib/libociei.so' HEAD
-git filter-branch --tree-filter 'rm oracle_client_12_2_exp_imp/lib/libclntsh.so.12.1' HEAD
-git filter-branch --tree-filter 'rm oracle_client_12_2_exp_imp/lib/libociei.so' HEAD
-git push -->
 ```
 
 ## build
@@ -46,3 +38,32 @@ git clone https://github.com/hktalent/myKali && cd myKali
 
 docker build -t mykali20190526 --no-cache .
 ```
+
+## tools
+### oracle database tools
+#### /usr/share/oracle_client_12_2_exp_imp/
+- exp
+- expdp
+- imp
+- impdp
+- sqlldr
+- wrc
+- lib/adrci
+- lib/genezi
+- lib/uidrvci
+
+#### /usr/share/sqlcl/bin/
+- adrci
+- genezi
+- sqlplus
+
+#### /usr/share/sqldeveloper
+- sqldeveloper.sh
+
+### MSSQL Server database tools
+#### /usr/share/sqlcl
+- bin/sql
+
+### jpexs-decompiler
+- ffdec
+
