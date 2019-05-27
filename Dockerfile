@@ -25,16 +25,16 @@ RUN apt -y update --fix-missing && apt -y upgrade --fix-missing && apt -yy dist-
     && apt -y  install python --fix-missing  \
     && apt -y  install nodejs --fix-missing  \
     && apt -y  install -y devscripts git-buildpackage debhelper debootstrap python-all --fix-missing  \
-    && apt -y  install build-essential ipython python-setuptools --fix-missing  \ --fix-missing  \
-    && apt -y  install python-pip python-dev libssl-dev libffi-dev couchdb --fix-missing  \ --fix-missing  \
-    && apt -y  install pkg-config libssl-dev libffi-dev libxml2-dev --fix-missing  \ --fix-missing  \
-    && apt -y  install libxslt1-dev libfreetype6-dev libpng-dev --fix-missing --fix-missing  \
+    && apt -y  install build-essential ipython python-setuptools --fix-missing \
+    && apt -y  install python-pip python-dev libssl-dev libffi-dev couchdb --fix-missing   \
+    && apt -y  install pkg-config libssl-dev libffi-dev libxml2-dev --fix-missing  \ 
+    && apt -y  install libxslt1-dev libfreetype6-dev libpng-dev --fix-missing  \
     && apt -y  install openvas wfuzz --fix-missing  \
     && apt -y  install tcpdump --fix-missing  \
     && apt -y  install ettercap-text-only --fix-missing  \
-    && apt -y  install bettercap jsql arachni hurl reaver gobuster golismero t50 sqlmap --fix-missing --fix-missing  \
-    && apt -y  install redis-server jboss-autopwn dotdotpwn fimap  --fix-missing --fix-missing  \
-    && apt -y  install zaproxy  apache-users sslsplit sqlninja inspy  powerfuzzer --fix-missing --fix-missing  \
+    && apt -y  install bettercap jsql arachni hurl reaver gobuster golismero t50 sqlmap --fix-missing  \
+    && apt -y  install redis-server jboss-autopwn dotdotpwn fimap  --fix-missing  \
+    && apt -y  install zaproxy  apache-users sslsplit sqlninja inspy  powerfuzzer --fix-missing \
     && apt -y  install sysfsutils  --fix-missing  \
     && apt -y install kali-linux-top10 kali-linux-pwtools software-properties-common xrdp python-scapy wmi-client winrmcp winexe wig colordiff colortail unzip vim tmux xterm zsh curl strace tmate ant shellter samdump2 rdesktop --fix-missing \
     && apt -y install cl-sql-oracle SET --fix-missing \
