@@ -11,4 +11,5 @@ RUN apt -y update --fix-missing && apt -y upgrade --fix-missing && apt-get -yy d
     && apt -y install oscanner tnscmd10g --fix-missing
     # libmono-oracle4.0-cil oracle-instantclient18.3-basic oracle-instantclient18.3-devel oracle-instantclient18.3-sqlplus
 
+ COPY  oracle_client_12_2_exp_imp /usr/share/oracle_client_12_2_exp_imp
  
