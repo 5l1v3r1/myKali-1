@@ -13,7 +13,7 @@ COPY expMysql /usr/local/bin/
 COPY oracle /usr/lib/
 COPY bashrc /root/.bashrc
  
-RUN apt -y update --fix-missing && apt -y upgrade --fix-missing && apt-get -yy dist-upgrade && apt autoremove -yy \
+RUN apt -y update --fix-missing && apt -y upgrade --fix-missing && apt -yy dist-upgrade && apt autoremove -yy \
     && apt -y install kali-linux  chkrootkit rkhunter clamav clamtk clamav-daemon lynis --fix-missing \
     && apt -y  install xvfb --fix-missing  \
     && apt -y  install net-tools --fix-missing  \
@@ -24,11 +24,11 @@ RUN apt -y update --fix-missing && apt -y upgrade --fix-missing && apt-get -yy d
     && apt -y  install python3-pip --fix-missing  \
     && apt -y  install python --fix-missing  \
     && apt -y  install nodejs --fix-missing  \
-    && apt -y -get install -y devscripts git-buildpackage debhelper debootstrap python-all --fix-missing  \
-    && apt -y -get install build-essential ipython python-setuptools --fix-missing  \ --fix-missing  \
-    && apt -y -get install python-pip python-dev libssl-dev libffi-dev couchdb --fix-missing  \ --fix-missing  \
-    && apt -y -get install pkg-config libssl-dev libffi-dev libxml2-dev --fix-missing  \ --fix-missing  \
-    && apt -y -get install libxslt1-dev libfreetype6-dev libpng-dev --fix-missing --fix-missing  \
+    && apt -y  install -y devscripts git-buildpackage debhelper debootstrap python-all --fix-missing  \
+    && apt -y  install build-essential ipython python-setuptools --fix-missing  \ --fix-missing  \
+    && apt -y  install python-pip python-dev libssl-dev libffi-dev couchdb --fix-missing  \ --fix-missing  \
+    && apt -y  install pkg-config libssl-dev libffi-dev libxml2-dev --fix-missing  \ --fix-missing  \
+    && apt -y  install libxslt1-dev libfreetype6-dev libpng-dev --fix-missing --fix-missing  \
     && apt -y  install openvas wfuzz --fix-missing  \
     && apt -y  install tcpdump --fix-missing  \
     && apt -y  install ettercap-text-only --fix-missing  \
@@ -37,7 +37,7 @@ RUN apt -y update --fix-missing && apt -y upgrade --fix-missing && apt-get -yy d
     && apt -y  install zaproxy  apache-users sslsplit sqlninja inspy  powerfuzzer --fix-missing --fix-missing  \
     && apt -y  install sysfsutils  --fix-missing  \
     && apt -y install kali-linux-top10 kali-linux-pwtools software-properties-common xrdp python-scapy wmi-client winrmcp winexe wig colordiff colortail unzip vim tmux xterm zsh curl strace tmate ant shellter samdump2 rdesktop --fix-missing \
-    && apt -y install cl-sql-oracle --fix-missing \
+    && apt -y install cl-sql-oracle SET --fix-missing \
     && apt -y install oscanner tnscmd10g --fix-missing \
     && pip install cx_Oracle \
     && cd /usr/share/ && git clone https://github.com/jindrapetrik/jpexs-decompiler  && cd jpexs-decompiler && ant build \
