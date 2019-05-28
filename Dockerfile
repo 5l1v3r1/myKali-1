@@ -43,7 +43,7 @@ RUN echo "CURIP = " $CURIP \
     && apt -y install cl-sql-oracle set --fix-missing \
     && apt -y install oscanner tnscmd10g --fix-missing \
     && pip install cx_Oracle \
-    && cd /usr/share/ && git clone https://github.com/jindrapetrik/jpexs-decompiler  && cd jpexs-decompiler && ant build \
+    # && cd /usr/share/ && git clone https://github.com/jindrapetrik/jpexs-decompiler  && cd jpexs-decompiler && ant build \
     && chmod +x /usr/local/bin/expMysql \
     && ln -s /usr/share/set/setoolkit /usr/local/bin/SET \
     && apt update -y --fix-missing &&  apt upgrade  -y --fix-missing  && apt autoclean  -y --fix-missing
