@@ -53,6 +53,8 @@ cd DependencyCheck
 git submodule init
 git submodule update
 cd ..
+
+wget -O --no-check-certificate --user-agent="Mozilla/5.0 (X11;U;Linux i686;en-US;rv:1.9.0.3) Geco/2008092416 Firefox/3.0.3" https://github.com/dbeaver/dbeaver/releases/download/6.0.5/dbeaver-ce-6.0.5-linux.gtk.x86_64.tar.gz 
 ```
 ### build cache server
 optimization  fast cache for:
