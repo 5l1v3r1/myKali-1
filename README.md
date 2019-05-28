@@ -38,6 +38,13 @@ git pull --allow-unrelated-histories origin master
 ## build
 ```
 git clone https://github.com/hktalent/myKali && cd myKali
+git submodule add https://github.com/jindrapetrik/jpexs-decompiler
+cd jpexs-decompiler
+git submodule init
+git submodule update
+brew install ant || apt install ant
+ant build
+cd ..
 ```
 ### build cache server
 cache for:
