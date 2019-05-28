@@ -10,11 +10,13 @@ COPY expMysql /usr/local/bin/
 COPY oracle /usr/lib/
 COPY bashrc /root/.bashrc
 
-ENV http_proxy=http://192.168.30.148:3128 \
-    https_proxy=http://192.168.30.148:3128 \
-    ftp_proxy=http://192.168.30.148:3128
+ARG CURIP
+ENV http_proxy=http://$CURIP:3128 \
+    https_proxy=http://$CURIP:3128 \
+    ftp_proxy=http://$CURIP:3128
 
-RUN apt -y update --fix-missing && apt -y upgrade --fix-missing && apt -yy dist-upgrade && apt autoremove -yy \
+RUN echo "CURIP = " $CURIP \
+    && apt -y update --fix-missing && apt -y upgrade --fix-missing && apt -yy dist-upgrade && apt autoremove -yy \
     && apt -y install kali-linux  chkrootkit rkhunter clamav clamtk clamav-daemon lynis --fix-missing \
     && apt -y  install xvfb --fix-missing  \
     && apt -y  install net-tools --fix-missing  \
@@ -38,7 +40,7 @@ RUN apt -y update --fix-missing && apt -y upgrade --fix-missing && apt -yy dist-
     && apt -y  install zaproxy  apache-users sslsplit sqlninja inspy  powerfuzzer --fix-missing \
     && apt -y  install sysfsutils  --fix-missing  \
     && apt -y install kali-linux-top10 kali-linux-pwtools software-properties-common xrdp python-scapy wmi-client winrmcp winexe wig colordiff colortail unzip vim tmux xterm zsh curl strace tmate ant shellter samdump2 rdesktop --fix-missing \
-    && apt -y install cl-sql-oracle SET --fix-missing \
+    && apt -y install cl-sql-oracle set --fix-missing \
     && apt -y install oscanner tnscmd10g --fix-missing \
     && pip install cx_Oracle \
     && cd /usr/share/ && git clone https://github.com/jindrapetrik/jpexs-decompiler  && cd jpexs-decompiler && ant build \
@@ -46,3 +48,4 @@ RUN apt -y update --fix-missing && apt -y upgrade --fix-missing && apt -yy dist-
     && ln -s /usr/share/set/setoolkit /usr/local/bin/SET \
     && apt update -y --fix-missing &&  apt upgrade  -y --fix-missing  && apt autoclean  -y --fix-missing
     # libmono-oracle4.0-cil oracle-instantclient18.3-basic oracle-instantclient18.3-devel oracle-instantclient18.3-sqlplus
+# entrypoint: /code/entrypoint.sh

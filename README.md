@@ -5,6 +5,10 @@ myKali
 ```
 apt install clamscan
 clamscan -r --bell -i ./myKali
+
+```
+## fix git
+```
 find . -size +20000k|grep -v "git"|sed -E 's/.*\.//g'|sort -u|xargs -I % git lfs track "*.%"
 
 find . -size +20000k|grep -v ".git"
@@ -28,37 +32,73 @@ git pull --rebase .
 git push -f origin master --force
 git commit -m "fix" .
 git pull --allow-unrelated-histories origin master
-
-
 ```
+
 
 ## build
 ```
 git clone https://github.com/hktalent/myKali && cd myKali
+```
+### build cache server
+cache for:
+- docker build
+- dependency-check --updateonly
+- apt upgrade openvas
+- greenbone-scapdata-sync
+- greenbone-certdata-sync
+- greenbone-nvt-sync
+- /opt/nessus/sbin/nessuscli update --all
 
-# ls /Users/0x101/safe/cache |grep -v "squid-simple.conf"|xargs rm -rf 
+```
+curme=`whoami`
+# ls /Users/${curme}/safe/cache |grep -v "squid-simple.conf"|xargs rm -rf 
 docker stop squid
 docker rm -v squid
 
 docker run --name squid -d \
   --publish 3128:3128 \
   --restart=always \
-  -v /Users/0x101/safe/cache/squid-simple.conf:/etc/squid/squid.conf \
-  -v /Users/0x101/safe/cache:/var/spool/squid \
+  -v `pwd`/squid-simple.conf:/etc/squid/squid.conf \
+  -v `pwd`/cache:/var/spool/squid \
   sameersbn/squid
 docker start squid
-docker exec -it squid /bin/bash
-docker exec -it squid tail -f /var/log/squid/access.log
-
-
+# docker exec -it squid /bin/bash
+#  docker exec -it squid tail -f /var/log/squid/access.log
+```
+### build from bash shell
+```
 CURIP=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
 echo "CURIP = " ${CURIP}
 docker build -t mykali_mtx --no-cache --build-arg http_proxy=http://${CURIP}:3128 \
     --build-arg https_proxy=http://${CURIP}:3128 \
     --build-arg ftp_proxy=http://${CURIP}:3128 .
 ```
+### build from docker-compose
+```
+CURIP=`ifconfig en0 | grep inet | awk '$1=="inet" {print $2}'` docker-compose build --no-cache --build-arg CURIP=$CURIP
+```
+
+### build cleanup
+```
+docker ps -a|grep Exited|grep apt|awk '{print $1}'|xargs docker rm
+xxx=$(docker images|grep none|awk '{print $3}')
+for i in ${xxx[@]}
+do
+   docker ps -a |grep ${i}|awk '{print $1}'|xargs docker stop 
+   docker ps -a |grep ${i}|awk '{print $1}'|xargs docker rm 
+done
+
+docker images|grep none|awk '{print $3}'|xargs docker rmi 
+```
+
+### run docker 
+```
+docker-compose up
+```
 
 ## tools
+### any database tools
+- dbeaver
 ### oracle database tools
 #### /usr/share/oracle_client_12_2_exp_imp/
 - exp
