@@ -82,6 +82,7 @@ docker start squid
 ```
 ### build from bash shell
 ```
+docker rmi mykali_mtx
 CURIP=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
 echo "CURIP = " ${CURIP}
 docker build -t mykali_mtx --no-cache --build-arg http_proxy=http://${CURIP}:3128 \
@@ -90,6 +91,7 @@ docker build -t mykali_mtx --no-cache --build-arg http_proxy=http://${CURIP}:312
 ```
 ### build from docker-compose
 ```
+docker rmi mykali_mtx
 CURIP=`ifconfig en0 | grep inet | awk '$1=="inet" {print $2}'` docker-compose build --no-cache --build-arg CURIP=$CURIP
 ```
 
