@@ -12,7 +12,6 @@ COPY expMysql /usr/local/bin/
 COPY oracle /usr/lib/
 COPY bashrc /root/.bashrc
 COPY DependencyCheck /usr/share
-COPY dbeaver /usr/share
 
 ARG CURIP
 ENV http_proxy=http://$CURIP:3128 \
@@ -47,6 +46,8 @@ RUN set +e \
     && apt -y install kali-linux-top10 kali-linux-pwtools software-properties-common xrdp python-scapy wmi-client winrmcp winexe wig colordiff colortail unzip vim tmux xterm zsh curl strace tmate ant shellter samdump2 rdesktop --fix-missing \
     && apt -y install cl-sql-oracle set --fix-missing \
     && apt -y install oscanner tnscmd10g --fix-missing \
+    && wget -O /usr/share/dbeaver-ce-6.0.5-linux.gtk.x86_64.tar.gz https://github.com/dbeaver/dbeaver/releases/download/6.0.5/dbeaver-ce-6.0.5-linux.gtk.x86_64.tar.gz \
+    && cd /usr/share/ && tar xzf dbeaver-ce-6.0.5-linux.gtk.x86_64.tar.gz && rm -rf dbeaver-ce-6.0.5-linux.gtk.x86_64.tar.gz \
     && chkrootkit --update \
     && rkhunter --update \
     && freshclam --verbose \
