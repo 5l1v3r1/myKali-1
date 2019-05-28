@@ -47,7 +47,7 @@ ant build
 cd ..
 ```
 ### build cache server
-cache for:
+fast cache for:
 - docker build
 - dependency-check --updateonly
 - apt upgrade openvas
