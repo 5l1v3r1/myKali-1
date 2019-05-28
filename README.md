@@ -109,7 +109,7 @@ docker images|grep -E "kali|openvas"
 
 ### run docker 
 ```
-docker-compose up
+CURIP=`ifconfig en0 | grep inet | awk '$1=="inet" {print $2}'`  docker-compose up 
 ```
 
 ## tools

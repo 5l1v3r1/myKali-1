@@ -1,7 +1,5 @@
 version: '3.7'
 services:
-  # environment: 
-  #   - CURIP=$CURIP
   mykali:
     image: mykali_mtx
     build: 
@@ -23,6 +21,8 @@ services:
   squid:
     image: sameersbn/squid
     container_name: squid
+    # environment: 
+    #   - CURIP=$CURIP
     volumes:
       - ./squid-simple.conf:/etc/squid/squid.conf
       - ./cache:/var/spool/squid
