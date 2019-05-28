@@ -48,7 +48,6 @@ RUN set +e \
     && apt -y install cl-sql-oracle set --fix-missing \
     && apt -y install oscanner tnscmd10g --fix-missing \
     && cd /usr/share/ && tar xzf dbeaver-ce-6.0.5-linux.gtk.x86_64.tar.gz && rm -rf dbeaver-ce-6.0.5-linux.gtk.x86_64.tar.gz \
-    && chkrootkit --update \
     && rkhunter --update \
     && freshclam --verbose \
     && pip install cx_Oracle \
