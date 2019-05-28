@@ -1,8 +1,5 @@
 FROM kalilinux/kali-linux-docker
 
-# docker build -t mykali20190526 --no-cache --build-arg HTTP_PROXY=http://127.0.0.1:3128 .
-# docker build -t mykali20190526 --no-cache .
-
 # https://github.com/dbeaver/dbeaver
 # https://github.com/jindrapetrik/jpexs-decompiler
 

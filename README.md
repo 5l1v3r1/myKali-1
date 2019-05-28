@@ -37,6 +37,20 @@ git pull --allow-unrelated-histories origin master
 git clone https://github.com/hktalent/myKali && cd myKali
 
 docker build -t mykali20190526 --no-cache .
+
+ls /Users/0x101/safe/cache |grep -v "squid-simple.conf"|xargs rm -rf 
+docker stop squid
+docker rm -v squid
+
+docker run --name squid -d --restart=always \
+  --publish 3128:3128 \
+  -v /Users/0x101/safe/cache/squid-simple.conf:/etc/squid/squid.conf \
+  -v /Users/0x101/safe/cache:/var/spool/squid \
+  sameersbn/squid
+
+CURIP=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
+echo "CURIP = " ${CURIP}
+docker build -t mykali20190526 --no-cache --build-arg HTTP_PROXY=http://${CURIP}:3128 .
 ```
 
 ## tools
