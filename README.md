@@ -36,21 +36,26 @@ git pull --allow-unrelated-histories origin master
 ```
 git clone https://github.com/hktalent/myKali && cd myKali
 
-docker build -t mykali20190526 --no-cache .
-
-ls /Users/0x101/safe/cache |grep -v "squid-simple.conf"|xargs rm -rf 
+# ls /Users/0x101/safe/cache |grep -v "squid-simple.conf"|xargs rm -rf 
 docker stop squid
 docker rm -v squid
 
-docker run --name squid -d --restart=always \
+docker run --name squid -d \
   --publish 3128:3128 \
+  --restart=always \
   -v /Users/0x101/safe/cache/squid-simple.conf:/etc/squid/squid.conf \
   -v /Users/0x101/safe/cache:/var/spool/squid \
   sameersbn/squid
+docker start squid
+docker exec -it squid /bin/bash
+docker exec -it squid tail -f /var/log/squid/access.log
+
 
 CURIP=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
 echo "CURIP = " ${CURIP}
-docker build -t mykali20190526 --no-cache --build-arg HTTP_PROXY=http://${CURIP}:3128 .
+docker build -t mykali_mtx --no-cache --build-arg http_proxy=http://${CURIP}:3128 \
+    --build-arg https_proxy=http://${CURIP}:3128 \
+    --build-arg ftp_proxy=http://${CURIP}:3128 .
 ```
 
 ## tools

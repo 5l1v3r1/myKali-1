@@ -1,0 +1,29 @@
+version: '2.2'
+services:
+  mykali:
+    image: mykali_mtx
+    build: 
+      context: .
+      cache_from: 
+        - kalilinux/kali-linux-docker
+      dockerfile: Dockerfile
+      args:
+        - http_proxy="http://$$CURIP:3128"
+        - https_proxy="http://$$CURIP:3128"
+        - ftp_proxy="http://$$CURIP:3128"
+    container_name: mykali_mtx
+    ports:
+      - "4000-9000"
+      - "13742:13742"
+    depends_on:
+      - squid
+  squid:
+    image: sameersbn/squid
+    container_name: squid
+    volumes:
+      - ./squid-simple.conf:/etc/squid/squid.conf
+      - ./cache:/var/spool/squid
+    restart: always 
+    ports:
+      - "3128:3128"
+ 

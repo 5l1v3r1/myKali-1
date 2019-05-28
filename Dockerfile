@@ -9,7 +9,11 @@ COPY sqldeveloper /usr/share/
 COPY expMysql /usr/local/bin/
 COPY oracle /usr/lib/
 COPY bashrc /root/.bashrc
- 
+
+ENV http_proxy=http://192.168.30.148:3128 \
+    https_proxy=http://192.168.30.148:3128 \
+    ftp_proxy=http://192.168.30.148:3128
+
 RUN apt -y update --fix-missing && apt -y upgrade --fix-missing && apt -yy dist-upgrade && apt autoremove -yy \
     && apt -y install kali-linux  chkrootkit rkhunter clamav clamtk clamav-daemon lynis --fix-missing \
     && apt -y  install xvfb --fix-missing  \
@@ -23,7 +27,7 @@ RUN apt -y update --fix-missing && apt -y upgrade --fix-missing && apt -yy dist-
     && apt -y  install nodejs --fix-missing  \
     && apt -y  install -y devscripts git-buildpackage debhelper debootstrap python-all --fix-missing  \
     && apt -y  install build-essential ipython python-setuptools --fix-missing \
-    && apt -y  install python-pip python-dev libssl-dev libffi-dev couchdb --fix-missing   \
+    && apt -y  install python-pip python-dev libssl-dev libffi-dev --fix-missing   \
     && apt -y  install pkg-config libssl-dev libffi-dev libxml2-dev --fix-missing  \ 
     && apt -y  install libxslt1-dev libfreetype6-dev libpng-dev --fix-missing  \
     && apt -y  install openvas wfuzz --fix-missing  \
