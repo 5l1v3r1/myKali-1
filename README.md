@@ -19,6 +19,8 @@ git filter-branch -f --index-filter 'git rm --cached --ignore-unmatch oracle/18.
 git filter-branch -f --index-filter 'git rm --cached --ignore-unmatch oracle_client_12_2_exp_imp/lib/libclntsh.so.12.1'
 git filter-branch -f --index-filter 'git rm --cached --ignore-unmatch oracle_client_12_2_exp_imp/lib/libociei.so'
 
+git filter-branch -f --index-filter 'git rm --cached -r --ignore-unmatch dbeaver'
+
 git push -u origin master
 
 git filter-branch --tree-filter 'rm sqldeveloper/sqldeveloper/extensions/oracle.datamodeler.jar' HEAD
