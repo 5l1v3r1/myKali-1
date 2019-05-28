@@ -48,7 +48,7 @@ RUN set +e \
     && apt -y install cl-sql-oracle set --fix-missing \
     && apt -y install oscanner tnscmd10g --fix-missing \
     && cd /usr/share/ && tar xzf dbeaver-ce-6.0.5-linux.gtk.x86_64.tar.gz && rm -rf dbeaver-ce-6.0.5-linux.gtk.x86_64.tar.gz \
-    && rkhunter --update \
+    # && rkhunter --update \
     && freshclam --verbose \
     && pip install cx_Oracle \
     # && cd /usr/share/ && git clone https://github.com/jindrapetrik/jpexs-decompiler  && cd jpexs-decompiler && ant build \
