@@ -21,4 +21,6 @@ JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF-8
 export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 export GOPATH=/root/go
+alias dbeaver=/usr/share/dbeaver/dbeaver
+alias dependency-check=/usr/share/DependencyCheck/cli/target/release/bin/dependency-check.sh
 

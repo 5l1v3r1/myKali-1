@@ -1,5 +1,7 @@
 FROM kalilinux/kali-linux-docker
 
+LABEL maintainer="51pwn.com<s1pwned@gmail.com>"
+
 # https://github.com/dbeaver/dbeaver
 # https://github.com/jindrapetrik/jpexs-decompiler
 
@@ -9,13 +11,16 @@ COPY sqldeveloper /usr/share/
 COPY expMysql /usr/local/bin/
 COPY oracle /usr/lib/
 COPY bashrc /root/.bashrc
+COPY DependencyCheck /usr/share
+COPY dbeaver /usr/share
 
 ARG CURIP
 ENV http_proxy=http://$CURIP:3128 \
     https_proxy=http://$CURIP:3128 \
     ftp_proxy=http://$CURIP:3128
 
-RUN echo "CURIP = " $CURIP \
+RUN set +e \
+    && echo "CURIP = " $CURIP \
     && apt -y update --fix-missing && apt -y upgrade --fix-missing && apt -yy dist-upgrade && apt autoremove -yy \
     && apt -y install kali-linux  chkrootkit rkhunter clamav clamtk clamav-daemon lynis --fix-missing \
     && apt -y  install xvfb --fix-missing  \
@@ -42,10 +47,15 @@ RUN echo "CURIP = " $CURIP \
     && apt -y install kali-linux-top10 kali-linux-pwtools software-properties-common xrdp python-scapy wmi-client winrmcp winexe wig colordiff colortail unzip vim tmux xterm zsh curl strace tmate ant shellter samdump2 rdesktop --fix-missing \
     && apt -y install cl-sql-oracle set --fix-missing \
     && apt -y install oscanner tnscmd10g --fix-missing \
+    && chkrootkit --update \
+    && rkhunter --update \
+    && freshclam --verbose \
     && pip install cx_Oracle \
     # && cd /usr/share/ && git clone https://github.com/jindrapetrik/jpexs-decompiler  && cd jpexs-decompiler && ant build \
     && chmod +x /usr/local/bin/expMysql \
     && ln -s /usr/share/set/setoolkit /usr/local/bin/SET \
+    && source /root/.bashrc \
+    && dependency-check --updateonly \
     && apt update -y --fix-missing &&  apt upgrade  -y --fix-missing  && apt autoclean  -y --fix-missing
     # libmono-oracle4.0-cil oracle-instantclient18.3-basic oracle-instantclient18.3-devel oracle-instantclient18.3-sqlplus
 # entrypoint: /code/entrypoint.sh

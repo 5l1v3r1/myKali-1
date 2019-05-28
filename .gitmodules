@@ -1,3 +1,6 @@
 [submodule "jpexs-decompiler"]
 	path = jpexs-decompiler
 	url = https://github.com/jindrapetrik/jpexs-decompiler
+[submodule "DependencyCheck"]
+	path = DependencyCheck
+	url = https://github.com/jeremylong/DependencyCheck

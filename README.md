@@ -45,6 +45,12 @@ git submodule update
 brew install ant || apt install ant
 ant build
 cd ..
+
+git submodule add https://github.com/jeremylong/DependencyCheck
+cd DependencyCheck
+git submodule init
+git submodule update
+cd ..
 ```
 ### build cache server
 optimization  fast cache for:
@@ -96,6 +102,7 @@ do
 done
 
 docker images|grep none|awk '{print $3}'|xargs docker rmi 
+docker images|grep -E "kali|openvas"
 ```
 
 ### run docker 
