@@ -78,12 +78,13 @@ docker build -t mykali20190526 --no-cache --build-arg HTTP_PROXY=http://${CURIP}
 #### /usr/share/sqlcl
 - bin/sql
 
-### jpexs-decompiler
+### jpexs-decompiler,swf file decompiler
 - ffdec
 
-### lynis
+### lynis audit system
 ```
 lynis --check-all -Q
+lynis audit system remote 192.168.10.216
 ```
 
 ### clamav,clamav-daemon

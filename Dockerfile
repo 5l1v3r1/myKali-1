@@ -17,7 +17,7 @@ RUN apt -y update --fix-missing && apt -y upgrade --fix-missing && apt -yy dist-
     && apt -y  install masscan --fix-missing  \
     && apt -y  install proxychains --fix-missing  \
     && apt -y  install netcat --fix-missing  \
-    && apt -y  install maven --fix-missing  \
+    && apt -y  install maven  --fix-missing  \
     && apt -y  install python3-pip --fix-missing  \
     && apt -y  install python --fix-missing  \
     && apt -y  install nodejs --fix-missing  \
