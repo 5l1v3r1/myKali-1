@@ -49,12 +49,12 @@ RUN set +e \
     && apt -y install oscanner tnscmd10g --fix-missing \
     && cd /usr/share/ && tar xzf dbeaver-ce-6.0.5-linux.gtk.x86_64.tar.gz && rm -rf dbeaver-ce-6.0.5-linux.gtk.x86_64.tar.gz \
     # && rkhunter --update \
-    && freshclam --verbose \
+    # && freshclam --verbose \
     && pip install cx_Oracle \
     # && cd /usr/share/ && git clone https://github.com/jindrapetrik/jpexs-decompiler  && cd jpexs-decompiler && ant build \
     && ln -s /usr/share/set/setoolkit /usr/local/bin/SET \
     # && source /root/.bashrc \
-    && dependency-check --updateonly \
+    # && dependency-check --updateonly \
     && apt update -y --fix-missing &&  apt upgrade  -y --fix-missing  && apt autoclean  -y --fix-missing
     # libmono-oracle4.0-cil oracle-instantclient18.3-basic oracle-instantclient18.3-devel oracle-instantclient18.3-sqlplus
 
