@@ -33,12 +33,12 @@ git pull --allow-unrelated-histories origin master
 
 ## build
 ```
+brew install ant || apt install ant
 git clone https://github.com/hktalent/myKali && cd myKali
 git submodule add https://github.com/jindrapetrik/jpexs-decompiler
 cd jpexs-decompiler
 git submodule init
 git submodule update
-brew install ant || apt install ant
 ant build
 cd ..
 
@@ -46,6 +46,7 @@ git submodule add https://github.com/jeremylong/DependencyCheck
 cd DependencyCheck
 git submodule init
 git submodule update
+mvn clean package -DskipTests
 cd ..
 echo "insecure" >> ~/.curlrc
 echo "check_certificate = off" >> ~/.wgetrc
