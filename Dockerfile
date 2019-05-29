@@ -53,7 +53,7 @@ RUN set +e \
     && pip install cx_Oracle \
     # && cd /usr/share/ && git clone https://github.com/jindrapetrik/jpexs-decompiler  && cd jpexs-decompiler && ant build \
     && ln -s /usr/share/set/setoolkit /usr/local/bin/SET \
-    && source /root/.bashrc \
+    # && source /root/.bashrc \
     && dependency-check --updateonly \
     && apt update -y --fix-missing &&  apt upgrade  -y --fix-missing  && apt autoclean  -y --fix-missing
     # libmono-oracle4.0-cil oracle-instantclient18.3-basic oracle-instantclient18.3-devel oracle-instantclient18.3-sqlplus
