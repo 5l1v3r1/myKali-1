@@ -1,12 +1,6 @@
 # myKali
 myKali
 
-## clamscan
-```
-apt install clamscan
-clamscan -r --bell -i ./myKali
-
-```
 ## fix git
 ```
 find . -size +20000k|grep -v "git"|sed -E 's/.*\.//g'|sort -u|xargs -I % git lfs track "*.%"
@@ -82,6 +76,7 @@ docker run --name squid -d \
   sameersbn/squid
 docker start squid
 # docker exec -it squid /bin/bash
+squidclient -p 3128 mgr:info
 # docker exec -it squid tail -f /var/log/squid/access.log
 ```
 ### build from bash shell
@@ -89,14 +84,14 @@ docker start squid
 docker rmi mykali_mtx
 CURIP=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
 echo "CURIP = " ${CURIP}
-docker build -t mykali_mtx --no-cache --build-arg http_proxy=http://${CURIP}:3128 \
+docker build -t mykali_mtx1 --no-cache --build-arg http_proxy=http://${CURIP}:3128 \
     --build-arg https_proxy=http://${CURIP}:3128 \
     --build-arg ftp_proxy=http://${CURIP}:3128 .
 ```
 ### build from docker-compose
 ```
 docker rmi mykali_mtx
-CURIP=`ifconfig en0 | grep inet | awk '$1=="inet" {print $2}'` docker-compose build --no-cache --build-arg CURIP=$CURIP
+docker start squid;CURIP=`ifconfig en0 | grep inet | awk '$1=="inet" {print $2}'` docker-compose build --no-cache --build-arg CURIP=$CURIP
 ```
 
 ### build cleanup
@@ -154,9 +149,10 @@ lynis --check-all -Q
 lynis audit system remote 192.168.10.216
 ```
 
-### clamav,clamav-daemon
+### clamav,clamscan,clamav-daemon
 ```
 freshclam
+clamscan -r --bell -i ./myKali
 clamscan -r --bell -i ~/
 clamscan -r --remove /
 

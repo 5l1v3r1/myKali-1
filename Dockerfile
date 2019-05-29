@@ -1,26 +1,26 @@
 FROM kalilinux/kali-linux-docker
 
-LABEL maintainer="51pwn.com<s1pwned@gmail.com>"
+LABEL maintainer="51pwn.com<s1pwned@gmail.com>" \
+    description="my kali https://github.com/hktalent/myKali" \
+    version="1.0"
 
 # https://github.com/dbeaver/dbeaver
 # https://github.com/jindrapetrik/jpexs-decompiler
 
-COPY oracle_client_12_2_exp_imp /usr/share/
-COPY sqlcl /usr/share/
-COPY sqldeveloper /usr/share/
-COPY expMysql /usr/local/bin/
-COPY oracle /usr/lib/
-COPY bashrc /root/.bashrc
-COPY DependencyCheck /usr/share
-COPY dbeaver-ce-6.0.5-linux.gtk.x86_64.tar.gz /usr/share/
+COPY ["oracle_client_12_2_exp_imp","sqlcl","sqldeveloper","DependencyCheck","dbeaver-ce-6.0.5-linux.gtk.x86_64.tar.gz","/usr/share/"] \
+    ["oracle","/usr/lib/"] \
+    ["bashrc","/root/.bashrc"] \
+    ["expMysql","/usr/local/bin/"]
 
 ARG CURIP
+
 ENV http_proxy=http://$CURIP:3128 \
     https_proxy=http://$CURIP:3128 \
     ftp_proxy=http://$CURIP:3128
 
 RUN set +e \
     && echo "CURIP = " $CURIP \
+    # && chmod +x /usr/local/bin/expMysql \
     && apt -y update --fix-missing && apt -y upgrade --fix-missing && apt -yy dist-upgrade && apt autoremove -yy \
     && apt -y install kali-linux  chkrootkit rkhunter clamav clamtk clamav-daemon lynis --fix-missing \
     && apt -y  install xvfb --fix-missing  \
@@ -52,10 +52,12 @@ RUN set +e \
     && freshclam --verbose \
     && pip install cx_Oracle \
     # && cd /usr/share/ && git clone https://github.com/jindrapetrik/jpexs-decompiler  && cd jpexs-decompiler && ant build \
-    && chmod +x /usr/local/bin/expMysql \
     && ln -s /usr/share/set/setoolkit /usr/local/bin/SET \
     && source /root/.bashrc \
     && dependency-check --updateonly \
     && apt update -y --fix-missing &&  apt upgrade  -y --fix-missing  && apt autoclean  -y --fix-missing
     # libmono-oracle4.0-cil oracle-instantclient18.3-basic oracle-instantclient18.3-devel oracle-instantclient18.3-sqlplus
-# entrypoint: /code/entrypoint.sh
+
+EXPOSE 4000-9000 \
+      13742:13742
+# ENTRYPOINT ["","",""]
