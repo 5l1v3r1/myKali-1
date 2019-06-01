@@ -22,7 +22,7 @@ ARG CURIP
 RUN set +e \
     && echo "CURIP = " $CURIP \
     && apt -y update --fix-missing \
-    && apt -y install gnupg gnupg2 gnupg1 \
+    && apt -y install gnupg gnupg2 gnupg1 --fix-missing \
     # && chmod +x /usr/local/bin/expMysql \
     && echo "deb https://http.kali.org/kali kali-rolling main non-free contrib" > /etc/apt/sources.list \
     && apt-key adv --keyserver hkp://keys.gnupg.net --recv-keys 7D8D0BF6 \
@@ -49,8 +49,8 @@ RUN set +e \
     && apt -y  install redis-server jboss-autopwn dotdotpwn fimap  --fix-missing  \
     && apt -y  install zaproxy  apache-users sslsplit sqlninja inspy  powerfuzzer --fix-missing \
     && apt -y  install sysfsutils  --fix-missing  \
-    # kali-linux-top10 kali-linux-pwtools
-    && apt -y install kali-linux-full software-properties-common xrdp python-scapy wmi-client winrmcp winexe wig colordiff colortail unzip vim tmux xterm zsh curl strace tmate ant shellter samdump2 rdesktop --fix-missing \
+    # kali-linux-full kali-linux-top10 kali-linux-pwtools kali-linux-forensic kali-linux-gpu kali-linux-wireless
+    && apt -y install kali-linux-top10 kali-linux-pwtools kali-linux-web  software-properties-common xrdp python-scapy wmi-client winrmcp winexe wig colordiff colortail unzip vim tmux xterm zsh curl strace tmate ant shellter samdump2 rdesktop --fix-missing \
     && apt -y install cl-sql-oracle set --fix-missing \
     && apt -y install oscanner tnscmd10g --fix-missing \
     && apt -y install tcpdump graphviz imagemagick python-gnuplot python-crypto python-pyx \
