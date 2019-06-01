@@ -8,10 +8,10 @@ services:
         - kalilinux/kali-linux-docker
       dockerfile: Dockerfile
       args:
-        - CURIP="$$CURIP"
-        # - http_proxy="http://$CURIP:3128"
-        # - https_proxy="http://$CURIP:3128"
-        # - ftp_proxy="http://$CURIP:3128"
+        # - CURIP="$$CURIP"
+        - http_proxy="http://$CURIP:3128"
+        - https_proxy="http://$CURIP:3128"
+        - ftp_proxy="http://$CURIP:3128"
     container_name: mykali_mtx
     ports:
       - "4000-9000"
