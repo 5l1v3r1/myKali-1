@@ -92,7 +92,8 @@ docker build -t mykali_mtx1 --no-cache --build-arg http_proxy=http://${CURIP}:31
 ### build from docker-compose
 ```
 docker rmi mykali_mtx
-docker start squid;CURIP=`ifconfig en0 | grep inet | awk '$1=="inet" {print $2}'` docker-compose build --no-cache --build-arg CURIP=$CURIP
+docker start squid;CURIP=`ifconfig en0 | grep inet | awk '$1=="inet" {print $2}'`
+docker-compose build --no-cache --build-arg CURIP=$CURIP
 ```
 
 ### build cleanup
