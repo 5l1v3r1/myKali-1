@@ -18,8 +18,11 @@ ARG CURIP
 #     https_proxy=http://$CURIP:3128 \
 #     ftp_proxy=http://$CURIP:3128
 
+# https://unix.stackexchange.com/questions/429729/apt-get-update-error-in-kali-linux-after-dist-upgrade/ 
 RUN set +e \
     && echo "CURIP = " $CURIP \
+    && apt -y update --fix-missing \
+    && apt -y install gnupg gnupg2 gnupg1 \
     # && chmod +x /usr/local/bin/expMysql \
     && echo "deb https://http.kali.org/kali kali-rolling main non-free contrib" > /etc/apt/sources.list \
     && apt-key adv --keyserver hkp://keys.gnupg.net --recv-keys 7D8D0BF6 \
