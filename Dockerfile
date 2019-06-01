@@ -14,9 +14,9 @@ COPY ["oracle_client_12_2_exp_imp","sqlcl","sqldeveloper","DependencyCheck","dbe
 
 ARG CURIP
 
-ENV http_proxy=http://$CURIP:3128 \
-    https_proxy=http://$CURIP:3128 \
-    ftp_proxy=http://$CURIP:3128
+# ENV http_proxy=http://$CURIP:3128 \
+#     https_proxy=http://$CURIP:3128 \
+#     ftp_proxy=http://$CURIP:3128
 
 RUN set +e \
     && echo "CURIP = " $CURIP \
