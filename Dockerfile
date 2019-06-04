@@ -24,7 +24,7 @@ RUN set +e \
     && apt -y update --fix-missing \
     && apt -y install gnupg gnupg2 gnupg1 --fix-missing \
     # && chmod +x /usr/local/bin/expMysql \
-    && echo "deb https://http.kali.org/kali kali-rolling main non-free contrib" > /etc/apt/sources.list \
+    && echo -e "deb https://http.kali.org/kali kali-rolling main non-free contrib" > /etc/apt/sources.list \
     && apt-key adv --keyserver hkp://keys.gnupg.net --recv-keys 7D8D0BF6 \
     && apt -y update --fix-missing && apt -y upgrade --fix-missing && apt -yy dist-upgrade && apt autoremove -yy \
     && apt -y install kali-linux  chkrootkit rkhunter clamav clamtk clamav-daemon lynis --fix-missing \
