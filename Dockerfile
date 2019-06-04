@@ -21,7 +21,7 @@ ARG CURIP
 # https://unix.stackexchange.com/questions/429729/apt-get-update-error-in-kali-linux-after-dist-upgrade/ 
 RUN set +e \
     && echo "CURIP = " $CURIP \
-    && apt -y update --fix-missing \
+    # && apt -y update --fix-missing \
     && apt -y install gnupg gnupg2 gnupg1 --fix-missing \
     # && chmod +x /usr/local/bin/expMysql \
     && echo -e "deb https://http.kali.org/kali kali-rolling main non-free contrib" > /etc/apt/sources.list \
