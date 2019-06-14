@@ -42,6 +42,12 @@ git submodule update
 ant build
 cd ..
 
+git submodule add https://github.com/hktalent/shallot_eschalot
+cd shallot_eschalot
+git submodule init
+git submodule update
+cd ..
+
 git submodule add https://github.com/jeremylong/DependencyCheck
 cd DependencyCheck
 git submodule init
@@ -164,4 +170,10 @@ clamscan -r --remove /
 ```
 rkhunter -c
 chkrootkit|grep not
+```
+### How do you get a specific .onion address for your hidden
+shallot,eschalot 
+```
+eschalot -vct4 -r "^test|exam$"
+shallot ^xxxx
 ```

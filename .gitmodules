@@ -4,3 +4,6 @@
 [submodule "DependencyCheck"]
 	path = DependencyCheck
 	url = https://github.com/jeremylong/DependencyCheck
+[submodule "shallot_eschalot"]
+	path = shallot_eschalot
+	url = https://github.com/hktalent/shallot_eschalot

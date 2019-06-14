@@ -7,7 +7,7 @@ LABEL maintainer="51pwn.com<s1pwned@gmail.com>" \
 # https://github.com/dbeaver/dbeaver
 # https://github.com/jindrapetrik/jpexs-decompiler
 
-COPY ["oracle_client_12_2_exp_imp","sqlcl","sqldeveloper","DependencyCheck","dbeaver-ce-6.0.5-linux.gtk.x86_64.tar.gz","/usr/share/"] \
+COPY ["oracle_client_12_2_exp_imp","sqlcl","sqldeveloper","DependencyCheck","dbeaver-ce-6.0.5-linux.gtk.x86_64.tar.gz"."shallot_eschalot","/usr/share/"] \
     ["oracle","/usr/lib/"] \
     ["bashrc","/root/.bashrc"] \
     ["expMysql","/usr/local/bin/"]
@@ -61,6 +61,7 @@ RUN set +e \
     && ln -s /usr/share/set/setoolkit /usr/local/bin/SET \
     # && source /root/.bashrc \
     # && dependency-check --updateonly \
+    && chmod +x /usr/share/shallot_eschalot/install.sh && /usr/share/shallot_eschalot/install.sh \
     && apt update -y --fix-missing &&  apt upgrade  -y --fix-missing  && apt autoclean  -y --fix-missing
     # libmono-oracle4.0-cil oracle-instantclient18.3-basic oracle-instantclient18.3-devel oracle-instantclient18.3-sqlplus
 
