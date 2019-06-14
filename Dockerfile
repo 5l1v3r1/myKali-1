@@ -53,7 +53,7 @@ RUN set +e \
     && apt -y install kali-linux-top10 kali-linux-pwtools kali-linux-web  software-properties-common xrdp python-scapy wmi-client winrmcp winexe wig colordiff colortail unzip vim tmux xterm zsh curl strace tmate ant shellter samdump2 rdesktop --fix-missing \
     && apt -y install cl-sql-oracle set --fix-missing \
     && apt -y install oscanner tnscmd10g --fix-missing \
-    && apt -y install tcpdump graphviz imagemagick python-gnuplot python-crypto python-pyx \
+    && apt -y install tcpdump graphviz imagemagick python-gnuplot python-crypto python-pyx golang libpcap-dev libnetfilter-queue-dev bettercap \
     && cd /usr/share/ && tar xzf dbeaver-ce-6.0.5-linux.gtk.x86_64.tar.gz && rm -rf dbeaver-ce-6.0.5-linux.gtk.x86_64.tar.gz \
     # && rkhunter --update && freshclam --verbose \
     && pip install cx_Oracle scapy \
